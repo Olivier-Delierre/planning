@@ -25,6 +25,15 @@ Rdv::~Rdv()
 {}
 
 /**
+  Retourne la Date associé au Rdv.
+
+  @return d_date - la Date du Rdv.
+*/
+Date Rdv::date()  const {
+  return d_date;
+}
+
+/**
   Affiche le rendez-vous sur un flux de sortie de la manière suivante :
   Nom rendez-vous
   ===============
@@ -48,4 +57,18 @@ void Rdv::display(std::ostream& ost) const {
   for (int i = 0; i < nbPersonnes; i++)
     ost << d_personnes[i] << ", ";
   */
+}
+
+/**
+  Retourne le nom du Rdv.
+
+  @return d_name - le nom du Rdv.
+*/
+std::string Rdv::name()  const {
+  return d_name;
+}
+
+std::ostream& operator<<(std::ostream& ost, const Rdv& rdv) {
+  rdv.display(ost);
+  return ost;
 }

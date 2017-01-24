@@ -13,8 +13,9 @@ public:
   Rdv(const std::string& name, const Date& date);
   ~Rdv();
 
-  /** Affichage et lecture d'un Rdv */
+  Date date()   const;
   void display(std::ostream& ost)  const;
+  std::string name() const;
 private:
   std::string d_name;
   Date d_date;
@@ -25,5 +26,8 @@ private:
   int nbPersonnes;
   */
 };
+
+/** Surcharge de l'opérateur '<<' */
+std::ostream& operator<<(std::ostream& ost, const Rdv& rdv);
 
 #endif

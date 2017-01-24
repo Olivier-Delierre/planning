@@ -1,12 +1,12 @@
 CC = g++
 CFLAGS = -std=c++0x
-EXEC = build.exe
+EXEC = planning.exe
 OBJ = obj/
 
 all: $(EXEC)
 
-build.exe : main.o date.o rdv.o
-	$(CC) -o build.exe $(OBJ)main.o $(OBJ)date.o $(OBJ)rdv.o
+planning.exe : main.o date.o rdv.o
+	$(CC) -o planning.exe $(OBJ)main.o $(OBJ)date.o $(OBJ)rdv.o
 
 main.o: main.cpp
 	$(CC) $(CFLAGS) -c main.cpp -o $(OBJ)main.o

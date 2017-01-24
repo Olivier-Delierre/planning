@@ -1,10 +1,28 @@
+/**
+Gestion d'un emploi du temps
+@author Olivier Delierre
+@author Florent Hess
+@author Benoît Fantozzi
+@author Ilyasse Tissafi
+@version 1.0
+*/
+
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <cstring>
 
 #include "date.h"
 #include "rdv.h"
 
 using namespace std;
+
+static const string DBFILE { "list.db" };
+
+void enregistrementTest(const Rdv& rdv) {
+  ofstream f(DBFILE.c_str());
+  f << rdv.name() << endl << rdv.date() << endl << endl;
+}
 
 void displayTestRdv() {
   Date date;
@@ -17,7 +35,10 @@ void displayTestRdv() {
   cin >> date;
 
   Rdv rdv { name, date };
-  rdv.display(cout);
+  cout << rdv;
+
+  enregistrementTest(rdv);
+  enregistrementTest(rdv);
 }
 
 int main() {
