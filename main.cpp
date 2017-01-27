@@ -17,11 +17,23 @@ Gestion d'un emploi du temps
 
 using namespace std;
 
-static const string DBFILE { "list.db" };
+static const string DBFILE { "rdvlist.db" };
 
 void enregistrementTest(const Rdv& rdv) {
   ofstream f(DBFILE.c_str());
   f << rdv.name() << endl << rdv.date() << endl << endl;
+}
+
+void lectureTest() {
+  ifstream f(DBFILE.c_str());
+  string name;
+  Date date;
+
+  getline(f, name); //On récupère la ligne entière pour pas que cela coupe au premier espace
+  f >> date;
+
+  Rdv rdv { name, date };
+  cout << rdv;
 }
 
 void displayTestRdv() {
@@ -29,7 +41,7 @@ void displayTestRdv() {
   string name;
 
   cout << "Saisissez un nom de rendez-vous : ";
-  cin >> name;
+  getline(cin, name);
 
   cout << "Saisissez une date : ";
   cin >> date;
@@ -42,6 +54,7 @@ void displayTestRdv() {
 }
 
 int main() {
-  displayTestRdv();
+  //displayTestRdv();
+  lectureTest();
   return 0;
 }
